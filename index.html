@@ -75,15 +75,25 @@
     </div>
 
 
-    <div id="gameOver" class="hidden">
-
+    <section id="gameOver" class="hidden">
+<nav id="hs-nav"><a id="highscores" href="./Highscores-assets/index.html">View Highscores</a></nav>
         <h1>Game Over!</h1>
         <p id="endingP"></p>
         <div class="endingP1">
             <p>Type in your initials!</p>
         </div>
+        <form id="form">
+            <div id="initials">
+                <input type="text" id="name">
+            </div>
+            <div id="score">
+            </div>
+            <button id="submit">Submit</button>
+        </form>
+        
 
-    </div>
+
+    </section>
 
     <script src="./assets/script.js"></script>
 </body>

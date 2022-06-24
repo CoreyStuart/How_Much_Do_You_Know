@@ -11,10 +11,18 @@ let right = 0;
 let gameOver = document.querySelector('#gameOver')
 let endingP = document.querySelector('.endingP1')
 let timerVar;
+let score = document.querySelector('#score')
+let nameInput = document.querySelector('#name')
+let submitBtn = document.querySelector('#submit')
 
 function setTime() {
    timerSeconds --;
-   timeEl.textContent = timerSeconds
+   timeEl.textContent = timerSeconds + " seconds left"
+
+if(timerSeconds === 1) {
+    timeEl.textContent = timerSeconds + " second left"
+}
+
    if(timerSeconds <= 0) {
        endGame();
    }
@@ -134,24 +142,90 @@ function endGame() {
     gameOver.classList.remove("hidden");
 
     clearInterval(timerVar);
+}
+   
+function renderName() {
+    let name = localStorage.getItem("name");
+    localStorage.getItem("score");
 
-    gameOver.classList.add('end')
-
-    if(gameOver.classList === "end") {
-        let initialsEntry = prompt('Declare your name');
-       let entry = document.createElement('p');
-        entry.innerHTML = initialsEntry
-        endingP1.appendChild(entry);
-    }
+    nameInput.textContent = name;
+    // right.textContent
 }
 
+submitBtn.addEventListener('click', function(event) {
+    event.preventDefault();
+
+    let name = nameInput.value;
+    
+    if(name === "") {
+       alert("Please enter your name")
+    } else {
+        localStorage.setItem("name", name);
+        localStorage.setItem("score", right);
+        
+        renderName();
+    }
+
+})
 
 
 
 
-// for initials page
-// prompt
-//somewhere in the html have a spot that says game over 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// let nameInput = getElementById('#name').value;
+
+    // if(!name) {
+    //     preventDefault();
+    //     alert("Please enter your name");
+    // } else {
+    //     preventDefault();
+    //     (localStorage.setItem("name", ))
+    // }
+
+
+
+
+
+
+
+
+
+
+    // gameOver.classList.add('end')
+
+    // if(gameOver.classList === "end") {
+    //     let initialsEntry = prompt('Declare your name');
+    //    let entry = document.createElement('p');
+    //     entry.innerHTML = initialsEntry
+    //     endingP1.appendChild(entry);
+    // }
+
+
+
+
+
+
+
+
+
 //highscores and initials into local storage 
 //high score is variable "right"
 //addEventListener to submit button that leads to local storage of init and score 
